@@ -14,7 +14,9 @@ hey there
     var li = "<li>" + text + "</li>";
 
     //Now use appendChild and add it to the list!
-    document.getElementById("list").appendChild(li);
+    var z = document.createElement('li');
+    z.innerHTML = li;
+    document.getElementById("list").appendChild(z);
   }
   </script>
 </body>
