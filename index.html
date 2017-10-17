@@ -4,23 +4,24 @@
   <script type="text/javascript">
     
     $(document).ready(function () {
-      var blockspring = require('blockspring');
+        var blockspring = require('blockspring');
 
-      blockspring.define(function(request, response) {
+        blockspring.define(function(request, response) {
 
         var query = "SELECT A";
   
         blockspring.runParsed("query-google-spreadsheet", { 
-            "query": query,
-            "url": "https://docs.google.com/spreadsheets/d/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/edit?usp=sharing" 
-        }, { cache: true, expiry: 7200}, function(res) {
-  		    response.addOutput('cards', res.params.data);
-          response.end();
-      	});
-      });
+              "query": query,
+              "url": "https://docs.google.com/spreadsheets/d/11JYfkdJu2DNf1FLdvd4tlkzRklE1_c4lsxS_peHpXkA/edit#gid=1504627451" 
+            }, { cache: true, expiry: 7200}, function(res) {
+  		      response.addOutput('cards', res.params.data);
+            response.end();
+	          });
+	
+        });
+        
     });
-  }
-    
+      
   </script>
 
 <body>
