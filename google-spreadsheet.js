@@ -9,7 +9,7 @@ GoogleUrl = (function() {
       try {
         this.key = this.url.match(/d/(.*?)&/)[1];
       } catch (error) {
-        this.key = this.url.match(/(cells|list)\/(.*?)\//)[2];
+        this.key = this.url.match(/usp=(cells|list)\/(.*?)\//)[2];
      }
     } else {
       this.key = this.sourceIdentifier;
