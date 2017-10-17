@@ -22,9 +22,11 @@ hey there
   </script>
   
   <script>
-    var blockspring = require('blockspring');
+    
+    $(document).ready(function () {
+      var blockspring = require('blockspring');
 
-    blockspring.define(function(request, response) {
+      blockspring.define(function(request, response) {
 
         var query = "SELECT A";
   
@@ -36,5 +38,7 @@ hey there
           response.end();
       	});
    });
+  });
+    
   </script>
 </body>
