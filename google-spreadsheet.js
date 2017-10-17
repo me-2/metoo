@@ -100,14 +100,7 @@ GoogleSpreadsheet.find = function(params) {
   }
   return null;
 };
-/* Newly forked version of GoogleSpreadsheet.callbackCells(), which takes into account empty cells, 
-   and writes the data as json in this format:
-      { 
-        headers: [],
-        rows: [] 
-      }
-  @Ryan Weiss - 10/11/12 (hah)
-*/
+
 GoogleSpreadsheet.callbackCells = function(data) {
   var cell, googleSpreadsheet, googleUrl;
   googleUrl = new GoogleUrl(data.feed.id.$t);
@@ -119,68 +112,99 @@ GoogleSpreadsheet.callbackCells = function(data) {
     googleSpreadsheet.googleUrl(googleUrl);
   }
   googleSpreadsheet.data = (function() {
-    var _i, _len, _ref;
+    var _i, _len, _ref, _results;
     _ref = data.feed.entry;
-    var _results = [];
-   // console.log("DATA", data, _ref.length, _len);
     _results = [];
-
-    var headers = [];
-    var rows = [];
-
-    var cols = "ABCDEFGHIJKLMNOPQRSTUVQXY";
-    var expectedCol = 'A', currCol = 0;
-    var currRow = 2; //first row of data
-    var currRowData = []; //current row data;
-    var doHeaderCheck = true; //the data row numbers are not correct, and "1" is returned many times, so we only want the first
-
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       cell = _ref[_i];
-      var i = cell.title.$t;
-      var d = cell.content.$t;
-
-      //parse the headers:
-      var col = i[0]; var row = i.substring(1,i.length);
-      //console.log("Row", col, row);
-
-      if(row == "1" && doHeaderCheck) {
-        headers.push(d);
-      } else {
-          doHeaderCheck = false;
-          if(row != currRow) {
-            //push current row data and start a new row
-            rows.push(currRowData);
-            currRowData = [];
-            currRow = row;
-            //reset columns for next row
-            currCol = 0;
-            expectedCol = cols[currCol];
-          }
-
-          if(col != expectedCol) {
-            //fill in blank columns
-            var keepGoing = true;
-            while(keepGoing) {
-              if(expectedCol == col)
-                break;
-              currCol++;
-              expectedCol = cols[currCol];
-              currRowData.push('');
-            }
-          }
-
-          currRowData.push(d); 
-          currCol++;
-          expectedCol = cols[currCol];
-      }
-
-      _results.push({ cell:  cell.title.$t, content: cell.content.$t });
+      _results.push(cell.content.$t);
     }
-
-    return { headers: headers, rows: rows };
+    return _results;
   })();
   googleSpreadsheet.save();
   return googleSpreadsheet;
 };
+/* Newly forked version of GoogleSpreadsheet.callbackCells(), which takes into account empty cells, 
+   and writes the data as json in this format:
+      { 
+        headers: [],
+        rows: [] 
+      }
+  @Ryan Weiss - 10/11/12 (hah)
+*/
+// GoogleSpreadsheet.callbackCells = function(data) {
+//   var cell, googleSpreadsheet, googleUrl;
+//   googleUrl = new GoogleUrl(data.feed.id.$t);
+//   googleSpreadsheet = GoogleSpreadsheet.find({
+//     jsonUrl: googleUrl.jsonUrl
+//   });
+//   if (googleSpreadsheet === null) {
+//     googleSpreadsheet = new GoogleSpreadsheet();
+//     googleSpreadsheet.googleUrl(googleUrl);
+//   }
+//   googleSpreadsheet.data = (function() {
+//     var _i, _len, _ref;
+//     _ref = data.feed.entry;
+//     var _results = [];
+//    // console.log("DATA", data, _ref.length, _len);
+//     _results = [];
+
+//     var headers = [];
+//     var rows = [];
+
+//     var cols = "ABCDEFGHIJKLMNOPQRSTUVQXY";
+//     var expectedCol = 'A', currCol = 0;
+//     var currRow = 2; //first row of data
+//     var currRowData = []; //current row data;
+//     var doHeaderCheck = true; //the data row numbers are not correct, and "1" is returned many times, so we only want the first
+
+//     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+//       cell = _ref[_i];
+//       var i = cell.title.$t;
+//       var d = cell.content.$t;
+
+//       //parse the headers:
+//       var col = i[0]; var row = i.substring(1,i.length);
+//       //console.log("Row", col, row);
+
+//       if(row == "1" && doHeaderCheck) {
+//         headers.push(d);
+//       } else {
+//           doHeaderCheck = false;
+//           if(row != currRow) {
+//             //push current row data and start a new row
+//             rows.push(currRowData);
+//             currRowData = [];
+//             currRow = row;
+//             //reset columns for next row
+//             currCol = 0;
+//             expectedCol = cols[currCol];
+//           }
+
+//           if(col != expectedCol) {
+//             //fill in blank columns
+//             var keepGoing = true;
+//             while(keepGoing) {
+//               if(expectedCol == col)
+//                 break;
+//               currCol++;
+//               expectedCol = cols[currCol];
+//               currRowData.push('');
+//             }
+//           }
+
+//           currRowData.push(d); 
+//           currCol++;
+//           expectedCol = cols[currCol];
+//       }
+
+//       _results.push({ cell:  cell.title.$t, content: cell.content.$t });
+//     }
+
+//     return { headers: headers, rows: rows };
+//   })();
+//   googleSpreadsheet.save();
+//   return googleSpreadsheet;
+// };
 /* TODO (Handle row based data)
 GoogleSpreadsheet.callbackList = (data) ->*/

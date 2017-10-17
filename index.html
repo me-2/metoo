@@ -70,12 +70,10 @@ hey there
       }
     </style>
   </head> 
-  <body> 
+  <body > 
     <h1>me too</h1>
 
     <form id="foo">
-        <label for="name">Name:</label>
-        <textarea id="name" name="name" type="text" value=""></textarea>
          <label for="name">Comment:</label>
         <textarea id="comment" name="comment" cols="40"></textarea>
 
@@ -87,6 +85,8 @@ hey there
     <ul id='list'></ul>
 
     <div id='links'>
+
+    <div id="main"></div>
 
     </div>
 
@@ -185,9 +185,43 @@ hey there
 // 	 console.log(result.get("rows"));
         console.log(JSON.stringify(result));
         var thJ = JSON.parse(JSON.stringify(result));   
-        console.log(JSON.stringify(thJ.data.rows));
+        console.log(JSON.stringify(thJ.data));
+
+        var data = thJ.data;
+        var col0 = [];
+        var col1 = []
+        // console.log(data);
+        for(index=0; index<thJ.data.length; index++){
+          if(index%2 == 0 && index!=0){
+                // console.log(data[index]);
+                col0.push(data[index]);
+
+          } else if(index%2 == 1 && index!=1 && index!=0){
+                col1.push(data[index]);
+          }
+        }
+        console.log(col0);
+        console.log(col1);
+
+        for(comments=0; comments<col1.length;comments++){
+            var div = document.createElement("div");
+            var myheader = document.createElement("HEADER");
+            myheader.innerHTML = col0[comments];
+            div.style.width = "100px";
+            div.style.height = "100px";
+            div.style.background = "red";
+            div.style.color = "white";
+            myheader.style.marginTop = "20px";
+            div.innerHTML = col1[comments];
+
+            document.getElementById("main").appendChild(myheader);
+            document.getElementById("main").appendChild(div);
+
+        }
+
+
         // $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
-        $('#results').html(JSON.stringify(thJ.data.rows));
+        $('#results').html(JSON.stringify(thJ.data));
       });
     </script>
 
