@@ -9,10 +9,10 @@ class GoogleUrl
   constructor: (@sourceIdentifier) ->
     if (@sourceIdentifier.match(/http(s)*:/))
       @url = @sourceIdentifier
-      try
+#       try
         @key = @url.match(/key=(.*?)&/)[1]
-      catch error
-        @key = @url.match(/(cells|list)\/(.*?)\//)[2]
+#       catch error
+#         @key = @url.match(/(cells|list)\/(.*?)\//)[2]
     else
       @key = @sourceIdentifier
     @jsonCellsUrl = "http://spreadsheets.google.com/feeds/cells/" + @key + "/od6/public/basic?alt=json-in-script"
