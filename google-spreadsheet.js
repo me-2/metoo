@@ -6,11 +6,11 @@ GoogleUrl = (function() {
     this.sourceIdentifier = sourceIdentifier;
     if (this.sourceIdentifier.match(/http(s)*:/)) {
       this.url = this.sourceIdentifier;
-      try {
+     // try {
         this.key = this.url.match(/key=(.*?)&/)[1];
-      } catch (error) {
-        this.key = this.url.match(/(cells|list)\/(.*?)\//)[2];
-      }
+     // } catch (error) {
+     //   this.key = this.url.match(/(cells|list)\/(.*?)\//)[2];
+     // }
     } else {
       this.key = this.sourceIdentifier;
     }
