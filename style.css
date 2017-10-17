@@ -1,0 +1,25 @@
+#title{
+	margin:10%;
+}
+
+#main{
+	margin-right:10%;
+	margin-left:45%;
+	/*margin-top:-20%;*/
+}
+
+
+#foo{
+	margin-top:-15%;
+	margin-right:10%;
+	margin-left:45%;
+}
+
+#comment{
+	width:85%;
+	height:45px;
+}
+
+#sendbuttn{
+	margin-left:20px;
+}

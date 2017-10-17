@@ -55,6 +55,8 @@ hey there
     <title>Google Spreadsheet Javascript</title> 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="google-spreadsheet.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <style>
       body{
         background-color: #fff4cc;
@@ -71,17 +73,20 @@ hey there
     </style>
   </head> 
   <body > 
-    <h1>me too</h1>
+
+    <h1 id="title">me too</h1>
 
     <form id="foo">
-         <label for="name">Comment:</label>
-        <textarea id="comment" name="comment" cols="40"></textarea>
+        This is your story. 
+        <p></p>
+<!--          <label for="name">Comment:</label>
+ -->        <textarea id="comment" name="comment" cols="40"></textarea>
 
-        <input type="submit" value="Send" />
+        <input id="sendbuttn" type="submit" value="Send" />
     </form>
 
-    <pre id='results'></pre>
-
+<!--     <pre id='results'></pre>
+ -->
     <ul id='list'></ul>
 
     <div id='links'>
@@ -183,9 +188,9 @@ hey there
       googleSpreadsheet.url(url);
       googleSpreadsheet.load(function(result) {
 // 	 console.log(result.get("rows"));
-        console.log(JSON.stringify(result));
+        // console.log(JSON.stringify(result));
         var thJ = JSON.parse(JSON.stringify(result));   
-        console.log(JSON.stringify(thJ.data));
+        // console.log(JSON.stringify(thJ.data));
 
         var data = thJ.data;
         var col0 = [];
@@ -200,15 +205,15 @@ hey there
                 col1.push(data[index]);
           }
         }
-        console.log(col0);
-        console.log(col1);
+        // console.log(col0);
+        // console.log(col1);
 
         for(comments=0; comments<col1.length;comments++){
             var div = document.createElement("div");
             var myheader = document.createElement("HEADER");
             myheader.innerHTML = col0[comments];
-            div.style.width = "100px";
-            div.style.height = "100px";
+            div.style.width = "100%";
+            div.style.height = "150px";
             div.style.background = "red";
             div.style.color = "white";
             myheader.style.marginTop = "20px";
