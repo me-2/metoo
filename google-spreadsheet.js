@@ -7,7 +7,7 @@ GoogleUrl = (function() {
     if (this.sourceIdentifier.match(/http(s)*:/)) {
       this.url = this.sourceIdentifier;
       try {
-        this.key = this.url.match(/d/(.*?)&/)[1];
+        this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.url.match(/d/(.*?)&/)[1];
       } catch (error) {
         this.key = this.url.match(/usp=(cells|list)\/(.*?)\//)[2];
      }
