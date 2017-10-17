@@ -85,8 +85,7 @@ hey there
     </div>
     <iframe width='500' height='300' frameborder='0' ></iframe>
     <script>
-      var obj = JSON.parse(document.getElementById('results').text);
-      console.log(obj.rows);
+
     </script>
     <script id='script'>
       localStorage.clear();
@@ -96,6 +95,7 @@ hey there
       var googleSpreadsheet = new GoogleSpreadsheet();
       googleSpreadsheet.url(url);
       googleSpreadsheet.load(function(result) {
+	 console.log(result[rows]);
         $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
       });
     </script>
