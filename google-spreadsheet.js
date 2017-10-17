@@ -17,7 +17,7 @@ GoogleUrl = (function() {
     this.jsonCellsUrl = "http://spreadsheets.google.com/feeds/cells/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
     this.jsonListUrl = "http://spreadsheets.google.com/feeds/list/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
     this.jsonUrl = this.jsonCellsUrl;
-  }
+  //}
   return GoogleUrl;
 })();
 GoogleSpreadsheet = (function() {
