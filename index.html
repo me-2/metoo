@@ -20,4 +20,21 @@ hey there
     document.getElementById("list").appendChild(z);
   }
   </script>
+  
+  <script>
+    var blockspring = require('blockspring');
+
+    blockspring.define(function(request, response) {
+
+        var query = "SELECT A";
+  
+        blockspring.runParsed("query-google-spreadsheet", { 
+            "query": query,
+            "url": "https://docs.google.com/spreadsheets/d/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/edit?usp=sharing" 
+        }, { cache: true, expiry: 7200}, function(res) {
+  		    response.addOutput('cards', res.params.data);
+          response.end();
+      	});
+   });
+  </script>
 </body>
