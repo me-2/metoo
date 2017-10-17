@@ -96,6 +96,7 @@ hey there
       googleSpreadsheet.url(url);
       googleSpreadsheet.load(function(result) {
 // 	 console.log(result.get("rows"));
+        var thing = result.get("rows");
         $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
       });
     </script>
