@@ -96,7 +96,7 @@ hey there
       googleSpreadsheet.load(function(result) {
         $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
       });
-      var obj = JSON.parse('#results');
+      var obj = JSON.parse($('#results'));
       console.log(obj.rows);
     </script>
     <script>
