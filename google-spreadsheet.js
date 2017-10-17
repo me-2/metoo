@@ -15,8 +15,8 @@ GoogleUrl = (function() {
     } else {
       //this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.sourceIdentifier;
     }
-    this.jsonCellsUrl = "http://spreadsheets.google.com/feeds/cells/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
-    this.jsonListUrl = "http://spreadsheets.google.com/feeds/list/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
+    this.jsonCellsUrl = "https://spreadsheets.google.com/feeds/cells/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
+    this.jsonListUrl = "https://spreadsheets.google.com/feeds/list/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
     this.jsonUrl = this.jsonCellsUrl;
   }
   return GoogleUrl;
