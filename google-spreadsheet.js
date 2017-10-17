@@ -6,16 +6,16 @@ GoogleUrl = (function() {
     this.sourceIdentifier = sourceIdentifier;
     if (this.sourceIdentifier.match(/http(s)*:/)) {
       this.url = this.sourceIdentifier;
-      try {
-        this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.url.match(/d/(.*?)&/)[1];
-      } catch (error) {
-        this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.url.match(/usp=(cells|list)\/(.*?)\//)[2];
-     }
-    } else {
-      this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.sourceIdentifier;
-    }
-    this.jsonCellsUrl = "http://spreadsheets.google.com/feeds/cells/" + this.key + "/od6/public/basic?alt=json-in-script";
-    this.jsonListUrl = "http://spreadsheets.google.com/feeds/list/" + this.key + "/od6/public/basic?alt=json-in-script";
+//       try {
+//         this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.url.match(/d/(.*?)&/)[1];
+//       } catch (error) {
+//         this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.url.match(/usp=(cells|list)\/(.*?)\//)[2];
+//      }
+//     } else {
+//       this.key = "168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I";//this.sourceIdentifier;
+//     }
+    this.jsonCellsUrl = "http://spreadsheets.google.com/feeds/cells/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
+    this.jsonListUrl = "http://spreadsheets.google.com/feeds/list/168xHj4F6vkIU5Bvrot6Hq4goQlYiV8qylLkN1H9-G-I/od6/public/basic?alt=json-in-script";
     this.jsonUrl = this.jsonCellsUrl;
   }
   return GoogleUrl;
