@@ -7,7 +7,7 @@ GoogleUrl = (function() {
     if (this.sourceIdentifier.match(/http(s)*:/)) {
       this.url = this.sourceIdentifier;
       try {
-        this.key = this.url.match(/key=(.*?)&/)[1];
+        this.key = this.url.match(/d/(.*?)&/)[1];
       } catch (error) {
         this.key = this.url.match(/(cells|list)\/(.*?)\//)[2];
      }
