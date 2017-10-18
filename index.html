@@ -48,7 +48,7 @@
 
 
     <form id="foo">
-        Welcome to Me Too. This is an open site meant to be a safe place for sexual assult and harrassment survivors. Everything is completely anonymous, share as much or as little you would like, it was created purely for others to listen. 
+        Welcome to Me Too. This is an open site meant to be a safe place for sexual assault and harassment survivors. Everything is completely anonymous, share as much or as little you would like, it was created purely for others to listen. 
         <p></p>
         <textarea id="location" name="location" cols="40" placeholder="Optional Location"></textarea>
         <textarea id="comment" name="comment" cols="40" placeholder="This is your story."></textarea>
@@ -75,6 +75,11 @@
 
         // Bind to the submit event of our form
         $("#foo").submit(function(event){
+
+          if(document.getElementById("location").value == '')
+          {
+            document.getElementById("location").value = 'undefined';
+          }
 
             // Prevent default posting of form - put here to work in case of errors
             event.preventDefault();
@@ -187,15 +192,17 @@
         // console.log(data);
         iter = 0;
         for(index=0; index<thJ.data.length; index++){
-          if(iter>1 && index!=2){
+          if(iter>1 && index!=2 && index!=0 && index!=1){
             times.push(data[index]);
             iter =0;
+
+
           }
           else if(iter<=1) {
-            if(iter ==1 && index!=1){
+            if(iter ==1 && index!=1 && index!=2  && index!=0){
               places.push(data[index]);
 
-            } else if(iter ==0 && index !=0){
+            } else if(iter ==0 && index !=0  && index!=1  && index!=2){
               words.push(data[index]);
             }
             
@@ -204,9 +211,9 @@
           }
 
         }
-        // console.log(words);
-        // console.log(places);
-        // console.log(times);
+        console.log(words);
+        console.log(places);
+        console.log(times);
 
 
         for(comments=0; comments<words.length;comments++){
@@ -252,6 +259,7 @@
         $("div#links").append("<br/><a href='"+document.location.pathname+"'>Original Sample Spreadsheet</a>")
       }
     </script>
- 
+
+
   </body>
 </html>
