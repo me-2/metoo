@@ -58,7 +58,7 @@ hey there
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <style>
-      body{
+/*      body{
         background-color: #fff4cc;
         color: #6d6d6d;
         font-size: .8em;
@@ -69,20 +69,23 @@ hey there
         font-size: .8em;
         background-color: white;
         color:#606568;
-      }
+      }*/
     </style>
   </head> 
   <body > 
 
     <h1 id="title">me too</h1>
 
+    <div id="hiddenDiv" style="display: none;"></div>
+
+
     <form id="foo">
         This is your story. 
         <p></p>
-<!--          <label for="name">Comment:</label>
- -->        <textarea id="comment" name="comment" cols="40"></textarea>
+        <textarea id="location" name="location" cols="40" placeholder="Optional Location"></textarea>
+        <textarea id="comment" name="comment" cols="40" placeholder="This is your story."></textarea>
 
-        <input id="sendbuttn" type="submit" value="Send" />
+        <button id="sendbuttn" class="button" type="submit" value="Send"><span>Send</span></button>
     </form>
 
 <!--     <pre id='results'></pre>
@@ -163,18 +166,22 @@ hey there
 
 
   <script>
-  //   document.getElementById("add").onclick = function() {
-  //   //First things first, we need our text:
-  //   var text = document.getElementById("idea").value; //.value gets input values
+    document.getElementById("sendbuttn").onclick = function() {
+         $("#location").placeholder = "";
+          $("#comment").placeholder = "";
+        var hidden = document.getElementById("hiddenDiv");
+        hidden.style.display = "block";
+        // stateChange();
+        
 
-  //   //Now construct a quick list element
-  //   var li = "<li>" + text + "</li>";
+    }
 
-  //   //Now use appendChild and add it to the list!
-  //   var z = document.createElement('li');
-  //   z.innerHTML = li;
-  //   document.getElementById("list").appendChild(z);
-  //   }
+    function stateChange() {
+        setTimeout(function () {
+        location.reload();
+
+      }, 2000);
+    }
   // </script>
   
 
@@ -193,31 +200,51 @@ hey there
         // console.log(JSON.stringify(thJ.data));
 
         var data = thJ.data;
-        var col0 = [];
-        var col1 = []
+        var times = [];
+        var words = [];
+        var places = [];
         // console.log(data);
+        iter = 0;
         for(index=0; index<thJ.data.length; index++){
-          if(index%2 == 0 && index!=0){
-                // console.log(data[index]);
-                col0.push(data[index]);
-
-          } else if(index%2 == 1 && index!=1 && index!=0){
-                col1.push(data[index]);
+          if(iter>1 && index!=2){
+            times.push(data[index]);
+            iter =0;
           }
-        }
-        // console.log(col0);
-        // console.log(col1);
+          else if(iter<=1) {
+            if(iter ==1 && index!=1){
+              places.push(data[index]);
 
-        for(comments=0; comments<col1.length;comments++){
+            } else if(iter ==0 && index !=0){
+              words.push(data[index]);
+            }
+            
+            iter++;
+            
+          }
+
+        }
+        // console.log(words);
+        // console.log(places);
+        // console.log(times);
+
+        for(comments=0; comments<words.length;comments++){
             var div = document.createElement("div");
             var myheader = document.createElement("HEADER");
-            myheader.innerHTML = col0[comments];
+            myheader.innerHTML = times[comments] + " - " + places[comments];
+            myheader.style.color = "#CA7044";
             div.style.width = "100%";
-            div.style.height = "150px";
-            div.style.background = "red";
-            div.style.color = "white";
-            myheader.style.marginTop = "20px";
-            div.innerHTML = col1[comments];
+            div.style.maxWidth = "800px";
+            div.style.minHeight = "15px";
+            div.style.height = (words[comments].length* .18).toString()+ "px";
+            div.style.background = "#A6D0B7";
+            div.style.borderRadius = "6px";
+            div.style.color = "#323641";
+            div.style.padding = "15px";
+            div.style.fontSize = "13px";
+
+            myheader.style.marginTop = "20px";  
+
+            div.innerHTML = words[comments];
 
             document.getElementById("main").appendChild(myheader);
             document.getElementById("main").appendChild(div);
