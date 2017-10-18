@@ -1,5 +1,6 @@
 #title{
 	margin:10%;
+	font-size:30px;
 }
 
 #survivors{
@@ -7,21 +8,13 @@
 	margin-left:5%;
 
 }
-#allies{
-	float:left;
-	margin-left:3%;
 
-}
-#numSurvivors{
-	margin-left:5%;
-}
-#numAllies{
-	margin-left:3%;
-
-}
 .number{
 	float:left;
-	margin-top:-5%;
+	margin-top: -2%;
+	margin-left:9%;
+	font-size: 20px;
+	color:#CA7044;
 }
 
 #main{
