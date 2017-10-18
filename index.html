@@ -25,11 +25,22 @@
 
     <h1 id="title">me too</h1>
 
-    <div id="hiddenDiv" style="display: none;"></div>
+    <h1 class="number" id="numSurvivors">11</h1>
+    <button id="survivors" class="button" value="I'm a survivor."><span>I'm a survivor.</span></button>
+    <h1 class="number" id="numAllies">111</h1>
+    <button id="allies" class="button" value="I'm an ally."><span>I'm an ally.</span></button>
+
+
+    <div id="hiddenDiv" style="display: none;">Thank you for sharing your story, I know that it's not easy. Whether you came looking for closure, peace, or just a safe place, I hope this site helped you find what you were looking for.
+      <p><p>
+      <p></p>
+        <button id="continue" class="button" ><span>Continue</span></button>
+
+    </div>
 
 
     <form id="foo">
-        This is your story. 
+        Welcome to Me Too. This is an open site meant to be a safe place for sexual assult and harrassment survivors. Everything is completely anonymous, it was created purely for others to listen.
         <p></p>
         <textarea id="location" name="location" cols="40" placeholder="Optional Location"></textarea>
         <textarea id="comment" name="comment" cols="40" placeholder="This is your story."></textarea>
@@ -115,6 +126,16 @@
 
 
   <script>
+
+      document.getElementById("sendbuttn").onclick = function() {
+         $("#location").placeholder = "";
+          $("#comment").placeholder = "";
+        var hidden = document.getElementById("hiddenDiv");
+        hidden.style.display = "block";
+        // stateChange();
+        
+
+    }
     document.getElementById("sendbuttn").onclick = function() {
          $("#location").placeholder = "";
           $("#comment").placeholder = "";
@@ -125,11 +146,18 @@
 
     }
 
+    document.getElementById("survivors").onclick = function() {
+         stateChange();
+    }
+    document.getElementById("allies").onclick = function() {
+         stateChange();
+    }
+
     function stateChange() {
         setTimeout(function () {
         location.reload();
 
-      }, 2000);
+      }, 300);
     }
   // </script>
   
@@ -181,6 +209,8 @@
             var myheader = document.createElement("HEADER");
             myheader.innerHTML = times[comments] + " - " + places[comments];
             myheader.style.color = "#CA7044";
+            myheader.style.fontSize = "15px";
+            myheader.style.marginBottom= "5px";
             div.style.width = "100%";
             div.style.maxWidth = "800px";
             div.style.minHeight = "15px";
@@ -191,7 +221,7 @@
             div.style.padding = "15px";
             div.style.fontSize = "13px";
 
-            myheader.style.marginTop = "20px";  
+            myheader.style.marginTop = "30px";  
 
             div.innerHTML = words[comments];
 
