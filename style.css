@@ -9,6 +9,11 @@
 
 }
 
+#numberSubs{
+	margin-top: -5.5%;
+
+}
+
 .number{
 	float:left;
 	margin-top: -2%;
@@ -25,8 +30,8 @@
 
 #hiddenDiv{
 	width: 60%;
-	height:200px;
-	background-color: #D7B85D;
+	height:250px;
+	background-color: #EEA86C;
 	margin-right:20%;
 	margin-left:20%;
 	margin-top:-15%;

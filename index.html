@@ -26,12 +26,18 @@
     <h1 id="title">me too</h1>
 
     <h1 id="numberSubs" class="number"> </h1>
+    <p></p>
     <h1 class="number"> Submissions </h1>
 
 
 
-    <div id="hiddenDiv" style="display: none;">Thank you for sharing your story, I know that it's not easy. Whether you came looking for closure, peace, or just a safe place, I hope this site helped you find what you were looking for.
-      <p><p>
+    <div id="hiddenDiv" style="display: none;">Thank you for sharing your story, it's definitely not an easy feat. Whether you came looking for closure, peace, or just a safe place, I hope this site helped you find what you were looking for.
+      <p></p>
+      
+      <p style="font-size: 15px;">If you'd like to talk to someone the National Sexual Assault Hotline is available 24 hours a day at 1-800-656-4673</p>
+
+      <p style="font-size: 15px;">For more information about Me Too check out:
+      https://www.glamour.com/story/activist-tarana-burke-started-the-me-too-movement-10-years-ago</p>
       <p></p>
         <button id="continue" class="button" ><span>Continue</span></button>
 
@@ -39,7 +45,7 @@
 
 
     <form id="foo">
-        Welcome to Me Too. This is an open site meant to be a safe place for sexual assult and harrassment survivors. Everything is completely anonymous, it was created purely for others to listen.
+        Welcome to Me Too. This is an open site meant to be a safe place for sexual assult and harrassment survivors. Everything is completely anonymous, share whatever you would like, it was created purely for others to listen. 
         <p></p>
         <textarea id="location" name="location" cols="40" placeholder="Optional Location"></textarea>
         <textarea id="comment" name="comment" cols="40" placeholder="This is your story."></textarea>
@@ -125,6 +131,9 @@
 
 
   <script>
+   document.getElementById("continue").onclick = function() {
+            stateChange();
+    }
 
       document.getElementById("sendbuttn").onclick = function() {
          $("#location").placeholder = "";
@@ -196,17 +205,19 @@
         // console.log(places);
         // console.log(times);
 
+
         for(comments=0; comments<words.length;comments++){
+            current = (words.length-1)-comments;
             var div = document.createElement("div");
             var myheader = document.createElement("HEADER");
-            myheader.innerHTML = times[comments] + " - " + places[comments];
+            myheader.innerHTML = times[current] + " - " + places[current];
             myheader.style.color = "#CA7044";
             myheader.style.fontSize = "15px";
             myheader.style.marginBottom= "5px";
             div.style.width = "100%";
             div.style.maxWidth = "800px";
             div.style.minHeight = "15px";
-            div.style.height = (words[comments].length* .18).toString()+ "px";
+            div.style.height = (words[current].length* .18).toString()+ "px";
             div.style.background = "#A6D0B7";
             div.style.borderRadius = "6px";
             div.style.color = "#323641";
@@ -215,13 +226,14 @@
 
             myheader.style.marginTop = "30px";  
 
-            div.innerHTML = words[comments];
+            div.innerHTML = words[current];
 
             document.getElementById("main").appendChild(myheader);
             document.getElementById("main").appendChild(div);
 
         }
 
+        document.getElementById("numberSubs").innerHTML = words.length.toString();
 
         // $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
         $('#results').html(JSON.stringify(thJ.data));
